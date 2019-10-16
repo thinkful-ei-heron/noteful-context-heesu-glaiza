@@ -29,6 +29,7 @@ class App extends Component {
                     return notesRes.json().then(e => Promise.reject(e));
                 if(!folderRes.ok)
                     return folderRes.json().then(e => Promise.reject(e));
+
                 return Promise.all([notesRes.json(), folderRes.json() ]);
             })
             .then(([notes, folders]) => {
@@ -39,11 +40,11 @@ class App extends Component {
             });
     }
     
-    handleDelete = noteId => {
+    handleDeleteNote = noteId => {
         this.setState({
-            notes: this.setState.notes.filter(note => note.id !== noteId)
-        })
-    }
+            notes: this.state.notes.filter(note => note.id !== noteId)
+        });
+    };
 
     renderNavRoutes() {
         return (
@@ -106,22 +107,22 @@ class App extends Component {
         const valueContext ={
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDelete
-        }   
+            deleteNote: this.handleDeleteNote
+        };
         
         return (
-        <NotefulContext.Provider value={valueContext}>
-            <div className="App">
-                <nav className="App__nav">{this.renderNavRoutes()}</nav>
-                <header className="App__header">
-                    <h1>
-                        <Link to="/">Noteful</Link>{' '}
-                        <FontAwesomeIcon icon="check-double" />
-                    </h1>
-                </header>
-                <main className="App__main">{this.renderMainRoutes()}</main>
-            </div>
-        </NotefulContext.Provider>
+            <NotefulContext.Provider value={valueContext}>
+                <div className="App">
+                    <nav className="App__nav">{this.renderNavRoutes()}</nav>
+                    <header className="App__header">
+                        <h1>
+                            <Link to="/">Noteful</Link>{' '}
+                            <FontAwesomeIcon icon="check-double" />
+                        </h1>
+                    </header>
+                    <main className="App__main">{this.renderMainRoutes()}</main>
+                </div>
+            </NotefulContext.Provider>
         );
     }
 };

@@ -3,7 +3,7 @@ import NotefulContext from '../NotefulContext'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
-import {getNotesForFolder} from '../notes-helpers'
+import { getNotesForFolder } from '../notes-helpers'
 import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
