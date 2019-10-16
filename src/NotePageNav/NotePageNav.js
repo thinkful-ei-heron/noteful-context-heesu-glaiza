@@ -1,9 +1,9 @@
 import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
-import './NotePageNav.css'
 import NotefulContext from '../NotefulContext'
 import {findNote, findFolder} from '../notes-helpers'
+import './NotePageNav.css'
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {

@@ -1,10 +1,10 @@
 import React from 'react'
-import NotefulContext from '../NotefulContext'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import { getNotesForFolder } from '../notes-helpers'
 import CircleButton from '../CircleButton/CircleButton'
+import NotefulContext from '../NotefulContext'
 import './NoteListMain.css'
 
 export default class NoteListMain extends React.Component {
@@ -20,7 +20,6 @@ export default class NoteListMain extends React.Component {
     const { notes = [] } = this.context
     const { folderId } = this.props.match.params
     const notesForFolder = getNotesForFolder(notes, folderId)
-
     return (
       <section className='NoteListMain'>
       <ul>

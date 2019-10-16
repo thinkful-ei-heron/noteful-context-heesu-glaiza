@@ -26,18 +26,15 @@ export default class Note extends React.Component {
     })
     .then(res => {
       if(!res.ok) 
-      // {
-        return res.json().then(e => Promise.reject(e))
+          return res.json().then(e => Promise.reject(e))
         return res.json()
-      // }
-        
     })
-    .then( () => {
+    .then(() => {
       this.context.deleteNote(noteId)
       this.props.onDeleteNote(noteId)
     })
     .catch(error => {
-      console.error({error})
+      console.error({ error })
     })
   }
 
@@ -53,7 +50,7 @@ export default class Note extends React.Component {
         </h2>
         <button className='Note__delete' 
           type='button'
-          onclick={this.handleClickDelete} >
+          onClick={this.handleClickDelete} >
           <FontAwesomeIcon icon='trash-alt' />
           {' '}
           remove
