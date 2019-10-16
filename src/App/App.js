@@ -104,8 +104,8 @@ class App extends Component {
         const value ={
             notes: this.state.notes,
             folders: this.state.folders,
-            
-     }   
+            deleteNote: this.handleDelete
+        }   
         return (
         <ApiContext.Provider value={value}>
             <div className="App">
