@@ -1,4 +1,3 @@
-
 export const findFolder = (folders=[], folderId) =>
   folders.find(folder => folder.id === folderId)
 

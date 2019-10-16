@@ -9,7 +9,7 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 // import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
 import config from '../config';
-import ApiContext from '../ApiContext';
+import NotefulContext from '../NotefulContext';
 
 class App extends Component {
     state = {
@@ -40,7 +40,9 @@ class App extends Component {
     }
     
     handleDelete = noteId => {
-        this.setState({notes: this.setState.notes.filter(note => note.id !== noteId)})
+        this.setState({
+            notes: this.setState.notes.filter(note => note.id !== noteId)
+        })
     }
 
     renderNavRoutes() {
@@ -101,13 +103,14 @@ class App extends Component {
     }
 
     render() {
-        const value ={
+        const valueContext ={
             notes: this.state.notes,
             folders: this.state.folders,
             deleteNote: this.handleDelete
         }   
+        
         return (
-        <ApiContext.Provider value={value}>
+        <NotefulContext.Provider value={valueContext}>
             <div className="App">
                 <nav className="App__nav">{this.renderNavRoutes()}</nav>
                 <header className="App__header">
@@ -118,9 +121,9 @@ class App extends Component {
                 </header>
                 <main className="App__main">{this.renderMainRoutes()}</main>
             </div>
-        </ApiContext.Provider>
+        </NotefulContext.Provider>
         );
     }
-}
+};
 
 export default App;

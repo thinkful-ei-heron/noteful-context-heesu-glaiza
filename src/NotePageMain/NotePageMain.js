@@ -1,6 +1,6 @@
 import React from 'react'
 import Note from '../Note/Note'
-import ApiContext from '../ApiContext'
+import NotefulContext from '../NotefulContext'
 import {findNote} from '../notes-helpers'
 import './NotePageMain.css'
 
@@ -11,7 +11,7 @@ export default class NotePageMain extends React.Component {
     }
   }
 
-  static contextType = ApiContext;
+  static contextType = NotefulContext;
 
   handleDeleteNote = noteId => {
     this.props.history.push('/')
@@ -21,6 +21,7 @@ export default class NotePageMain extends React.Component {
     const { notes = [] } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || { content: ''}
+    
     return (
       <section className='NotePageMain'>
         <Note
